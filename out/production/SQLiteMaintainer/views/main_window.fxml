@@ -1,0 +1,391 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+  Copyright (c) 2015, 2019, Gluon and/or its affiliates.
+  All rights reserved. Use is subject to license terms.
+
+  This file is available and licensed under the following license:
+
+  Redistribution and use in source and binary forms, with or without
+  modification, are permitted provided that the following conditions
+  are met:
+
+  - Redistributions of source code must retain the above copyright
+    notice, this list of conditions and the following disclaimer.
+  - Redistributions in binary form must reproduce the above copyright
+    notice, this list of conditions and the following disclaimer in
+    the documentation and/or other materials provided with the distribution.
+  - Neither the name of Oracle Corporation nor the names of its
+    contributors may be used to endorse or promote products derived
+    from this software without specific prior written permission.
+
+  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+  "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+  LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+  A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+  OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+  SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+  LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+  DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+  THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+  (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+  OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+-->
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.SeparatorMenuItem?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.control.TreeView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.text.Font?>
+<?import org.fxmisc.richtext.CodeArea?>
+
+<VBox fx:id="mainWindowParent" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="724.0" prefWidth="1261.0" style="-fx-focus-color: transparent; -fx-background-color: #dfdfdf; -fx-faint-focus-color: transparent;" stylesheets="@../resources/application.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.MainController">
+  <children>
+    <MenuBar prefWidth="300.0" style="-fx-border-width: 1px  0 0 0; -fx-border-color: lightgray;" VBox.vgrow="NEVER">
+      <menus>
+        <Menu mnemonicParsing="false" text="File">
+          <items>
+            <MenuItem mnemonicParsing="false" onAction="#createNewProjectFolder" text="New Project Folder" />
+            <MenuItem fx:id="menuItemOpen" mnemonicParsing="false" onAction="#openFolder" text="Open…" />
+            <Menu fx:id="openRecentMenuItem" mnemonicParsing="false" text="Open Recent" />
+            <SeparatorMenuItem mnemonicParsing="false" />
+            <MenuItem mnemonicParsing="false" onAction="#closeApp" text="Quit" />
+          </items>
+        </Menu>
+        <Menu mnemonicParsing="false" text="Edit">
+          <items>
+            <MenuItem mnemonicParsing="false" text="Cut" />
+            <MenuItem mnemonicParsing="false" text="Copy" />
+            <MenuItem mnemonicParsing="false" text="Paste" />
+            <SeparatorMenuItem mnemonicParsing="false" />
+            <MenuItem mnemonicParsing="false" text="Select All" />
+            <MenuItem mnemonicParsing="false" text="Unselect All" />
+          </items>
+        </Menu>
+            <Menu mnemonicParsing="false" text="Run">
+              <items>
+                <MenuItem fx:id="menuItemRun" mnemonicParsing="false" onAction="#runQuery" text="Run Query" />
+              </items>
+            </Menu>
+        <Menu mnemonicParsing="false" text="Help">
+          <items>
+            <MenuItem mnemonicParsing="false" text="About SQLiteMaintainer" />
+          </items>
+        </Menu>
+      </menus>
+    </MenuBar>
+      <HBox opacity="0.79" prefHeight="43.0" prefWidth="307.0">
+         <VBox.margin>
+            <Insets bottom="1.0" right="1500.0" />
+         </VBox.margin>
+         <children>
+            <AnchorPane onMouseClicked="#executeProgram" prefHeight="47.0" prefWidth="43.0" style="-fx-background-color: #dfdfdf; -fx-border-color: black; -fx-border-width: 2; -fx-border-radius: 10; -fx-pref-height: 50; -fx-pref-width: 50;">
+               <children>
+                  <AnchorPane layoutX="2.0" layoutY="3.0" prefHeight="16.0" prefWidth="21.0">
+                     <children>
+                        <ImageView fitHeight="31.0" fitWidth="32.0">
+                           <image>
+                              <Image url="@../resources/play_arrow_fill.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </AnchorPane>
+               </children>
+               <HBox.margin>
+                  <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+               </HBox.margin>
+            </AnchorPane>
+            <AnchorPane layoutX="10.0" layoutY="10.0" onMouseClicked="#toggleBackgroundColor" prefHeight="22.0" prefWidth="20.0" style="-fx-background-color: #dfdfdf; -fx-border-color: black; -fx-border-radius: 10; -fx-border-width: 2;">
+               <children>
+                  <AnchorPane layoutX="3.0" layoutY="11.0" prefHeight="16.0" prefWidth="31.0">
+                     <children>
+                        <ImageView fitHeight="28.0" fitWidth="26.0" layoutX="6.0" layoutY="-6.0">
+                           <image>
+                              <Image url="@../resources/palette_fill.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                     <padding>
+                        <Insets right="2.0" top="2.0" />
+                     </padding>
+                  </AnchorPane>
+               </children>
+               <HBox.margin>
+                  <Insets bottom="2.0" left="10.0" right="2.0" top="2.0" />
+               </HBox.margin>
+            </AnchorPane>
+            <AnchorPane fx:id="anchorPaneAdd" layoutX="62.0" layoutY="12.0" onMouseClicked="#addDatabase" prefHeight="29.0" prefWidth="41.0" style="-fx-background-color: #dfdfdf; -fx-border-color: black; -fx-border-radius: 10; -fx-border-width: 2;" visible="false">
+               <children>
+                  <AnchorPane layoutX="3.0" layoutY="11.0" prefHeight="17.0" prefWidth="26.0">
+                     <children>
+                        <ImageView fitHeight="28.0" fitWidth="26.0" layoutX="6.0" layoutY="-6.0">
+                           <image>
+                              <Image url="@../resources/another_add.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                     <padding>
+                        <Insets right="2.0" top="2.0" />
+                     </padding>
+                  </AnchorPane>
+               </children>
+               <HBox.margin>
+                  <Insets bottom="3.0" left="10.0" top="2.0" />
+               </HBox.margin>
+            </AnchorPane>
+         </children>
+      </HBox>
+    <SplitPane fx:id="splitePane" dividerPositions="0.1917263325377884, 0.7589498806682577" focusTraversable="true" nodeOrientation="LEFT_TO_RIGHT" prefHeight="-1.0" prefWidth="-1.0" style="-fx-border-color: #b2b9bb; -fx-border-color: WHITE;" VBox.vgrow="ALWAYS">
+      <items>
+        <AnchorPane maxWidth="350.0" minWidth="200.0" style="-fx-border-color: transparent; -fx-border-width: 0;" SplitPane.resizableWithParent="false">
+               <children>
+                  <TitledPane animated="false" layoutY="30.0" style="-fx-border-width: 0;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <padding>
+                        <Insets top="30.0" />
+                     </padding>
+                  </TitledPane>
+                  <TitledPane animated="false" layoutX="1.0" layoutY="512.0" text="SELECTED SCHEMA" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="512.0">
+                    <content>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="182.0" prefWidth="348.0" style="-fx-background-color: white;">
+                           <children>
+                              <Label fx:id="lblDBName" layoutX="12.0" layoutY="38.0" prefHeight="26.0" prefWidth="172.0" />
+                              <Label fx:id="lblTableName" layoutX="11.0" layoutY="109.0" prefHeight="26.0" prefWidth="172.0" />
+                              <Label layoutX="-7.0" layoutY="-3.0" prefHeight="33.0" prefWidth="362.0" style="-fx-background-color: #b3b6e8;" text="DataBase" AnchorPane.leftAnchor="-8.199999999999989" AnchorPane.rightAnchor="-8.199999999999989">
+                                 <padding>
+                                    <Insets left="20.0" />
+                                 </padding>
+                                 <font>
+                                    <Font name="Cambria" size="14.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="-7.0" layoutY="72.0" prefHeight="33.0" prefWidth="362.0" style="-fx-background-color: #b3b6e8;" text="DataTable" AnchorPane.leftAnchor="-8.199999999999989" AnchorPane.rightAnchor="-8.199999999999989">
+                                 <font>
+                                    <Font name="Cambria" size="14.0" />
+                                 </font>
+                                 <padding>
+                                    <Insets left="20.0" />
+                                 </padding>
+                              </Label>
+                           </children>
+                        </AnchorPane>
+                    </content>
+                  </TitledPane>
+                  <Label fx:id="lblDBLocation" layoutX="1.0" layoutY="-7.0" style="-fx-background-color: #FFF;" visible="false" AnchorPane.leftAnchor="-8.199999999999989" AnchorPane.rightAnchor="-8.199999999999989" AnchorPane.topAnchor="-8.199999999999989">
+                     <padding>
+                        <Insets left="10.0" />
+                     </padding>
+                  </Label>
+                  <VBox fx:id="vBoxDBLoad" layoutX="-5.0" layoutY="-6.0" prefHeight="633.0" prefWidth="241.0" style="-fx-background-color: white; -fx-border-color: transparent; -fx-border-width: 0;" AnchorPane.bottomAnchor="-10.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <children>
+                        <HBox id="myLabel">
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                           <children>
+                              <Label id="myLabel" fx:id="lblDatabaseNav" prefHeight="28.0" prefWidth="324.0" text="Database Navigator">
+                                 <padding>
+                                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                 </padding>
+                                 <font>
+                                    <Font name="Helvetica Neue" size="14.0" />
+                                 </font>
+                              </Label>
+                              <Pane fx:id="paneRefresh" maxHeight="25.0" maxWidth="25.0" minHeight="25.0" minWidth="25.0" onMouseClicked="#refreshDB" prefHeight="25.0" prefWidth="25.0" visible="false">
+                                 <HBox.margin>
+                                    <Insets right="5.0" top="2.0" />
+                                 </HBox.margin>
+                                 <children>
+                                    <ImageView fx:id="imageViewRefresh" onMouseClicked="#refreshTreeView" opacity="0.8">
+                                       <image>
+                                          <Image url="@../resources/reload.png" />
+                                       </image>
+                                    </ImageView>
+                                 </children>
+                              </Pane>
+                              <Pane fx:id="paneDelete" maxHeight="0.0" maxWidth="0.0" minHeight="0.0" minWidth="0.0" prefHeight="0.0" prefWidth="0.0" visible="false">
+                                 <HBox.margin>
+                                    <Insets right="5.0" top="2.0" />
+                                 </HBox.margin>
+                                 <children>
+                                    <ImageView fx:id="imageViewDelete" onMouseClicked="#deleteTreeItem" opacity="0.8">
+                                       <image>
+                                          <Image url="@../resources/delete.png" />
+                                       </image>
+                                    </ImageView>
+                                 </children>
+                              </Pane>
+                           </children>
+                        </HBox>
+                      <AnchorPane prefHeight="603.0" prefWidth="257.0" style="-fx-background-color: WHITE; -fx-border-width: 0;">
+                           <children>
+                              <TreeView fx:id="databaseTreeView" layoutX="-8.0" layoutY="-6.0" minWidth="-Infinity" prefHeight="606.0" prefWidth="249.0" style="-fx-border-color: transparent; -fx-border-width: 0;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                              <Label fx:id="lblLoadingDB" alignment="CENTER" layoutX="9.0" layoutY="5.0" prefHeight="19.0" prefWidth="229.0" text="Loading Database..." textAlignment="CENTER" textFill="#59a7ff" visible="false" wrapText="true">
+                                 <font>
+                                    <Font size="13.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                        </AnchorPane>
+                     </children>
+                  </VBox>
+               </children>
+        </AnchorPane>
+            <VBox prefHeight="595.0" prefWidth="712.0">
+               <children>
+                  <SplitPane dividerPositions="0.5" orientation="VERTICAL" prefWidth="712.0">
+                     <items>
+                        <HBox maxHeight="200.0" maxWidth="900.0" prefHeight="200.0">
+                           <children>
+                               
+                              <CodeArea id="textAreaCode" fx:id="textAreaCode" accessibleRole="TEXT_FIELD" cache="true" cacheHint="QUALITY" depthTest="ENABLE" layoutX="10.0" layoutY="10.0" pickOnBounds="false" prefHeight="303.0" prefWidth="1000.0">
+                                 <cursor>
+                                    <Cursor fx:constant="TEXT" />
+                                 </cursor>
+                                 <opaqueInsets>
+                                    <Insets />
+                                 </opaqueInsets>
+                                 <HBox.margin>
+                                    <Insets />
+                                 </HBox.margin>
+                              </CodeArea>
+                           </children>
+                           <padding>
+                              <Insets bottom="2.0" />
+                           </padding>
+                        </HBox>
+                        <TabPane fx:id="resultTabPane" maxHeight="1.7976931348623157E308" prefHeight="282.0" prefWidth="710.0" tabClosingPolicy="UNAVAILABLE">
+                          <tabs>
+                            <Tab fx:id="tab1" text="Result">
+                                 <content>
+                                    <TableView fx:id="dataTable" editable="true" prefHeight="173.0" prefWidth="841.0" />
+                                 </content>
+                                 <graphic>
+                                    <ImageView fitHeight="11.0" fitWidth="11.0">
+                                       <image>
+                                          <Image url="@../resources/vertical.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                            </Tab>
+                            <Tab fx:id="tab2" text="Error Log">
+                              <content>
+                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                       <children>
+                                          <TextArea fx:id="errorTextArea" editable="false" layoutX="2.0" prefHeight="205.0" prefWidth="841.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                       </children>
+                                    </AnchorPane>
+                              </content>
+                                 <graphic>
+                                    <ImageView fitHeight="11.0" fitWidth="11.0">
+                                       <image>
+                                          <Image url="@../resources/cross.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                            </Tab>
+                          </tabs>
+                        </TabPane>
+                     </items>
+                  </SplitPane>
+                  <VBox prefHeight="243.0" prefWidth="712.0">
+                     <children>
+                        <Label id="anotherLabel" fx:id="lblCommandHistory" alignment="CENTER" prefHeight="17.0" prefWidth="951.0" text="Command History" textAlignment="CENTER">
+                           <font>
+                              <Font name="Helvetica Neue" size="13.0" />
+                           </font>
+                        </Label>
+                        <StackPane prefHeight="197.0" prefWidth="712.0">
+                           <children>
+                              <TableView fx:id="tableCommandHistory">
+                                <columns>
+                                  <TableColumn fx:id="colImage" minWidth="6.0" prefWidth="21.0" />
+                                  <TableColumn fx:id="colMessage" minWidth="0.0" prefWidth="219.0" text="Message" />
+                                    <TableColumn fx:id="colQuery" prefWidth="370.0" text="Query" />
+                                    <TableColumn fx:id="colDate" prefWidth="101.0" text="Time" />
+                                </columns>
+                              </TableView>
+                           </children>
+                        </StackPane>
+                     </children>
+                  </VBox>
+               </children>
+            </VBox>
+            <AnchorPane maxWidth="300.0" minWidth="300.0" prefHeight="672.0" prefWidth="326.0" style="-fx-padding: 0; -fx-border-width: 0;">
+               <children>
+                  <VBox AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <children>
+                        <Label id="myLabel" fx:id="lblDatabaseNav1" prefHeight="28.0" prefWidth="324.0" text="Database Connection History">
+                           <padding>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </padding>
+                           <font>
+                              <Font name="Helvetica Neue" size="14.0" />
+                           </font>
+                        </Label>
+                        <ScrollPane hbarPolicy="NEVER">
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                           <content>
+                              <ListView fx:id="historyListView" prefHeight="669.0" prefWidth="348.0" style="-fx-padding: 0; -fx-background-radius: 0; -fx-border-radius: 0; -fx-border-width: 0;">
+                                 <padding>
+                                    <Insets left="2.0" />
+                                 </padding>
+                              </ListView>
+                           </content>
+                        </ScrollPane>
+                     </children>
+                  </VBox>
+               </children>
+               <opaqueInsets>
+                  <Insets bottom="-10.0" left="-10.0" right="-10.0" top="-10.0" />
+               </opaqueInsets>
+            </AnchorPane>
+      </items>
+         <VBox.margin>
+            <Insets />
+         </VBox.margin>
+    </SplitPane>
+    <HBox id="myHBox" alignment="CENTER_LEFT" spacing="5.0" VBox.vgrow="NEVER">
+      <children>
+        <Label fx:id="lblLeftStatus" maxHeight="1.7976931348623157E308" maxWidth="-1.0" HBox.hgrow="ALWAYS">
+          <font>
+            <Font size="11.0" fx:id="x3" />
+          </font>
+          <textFill>
+            <Color red="0.625" green="0.625" blue="0.625" fx:id="x4" />
+          </textFill>
+        </Label>
+        <Pane prefHeight="-1.0" prefWidth="-1.0" HBox.hgrow="ALWAYS" />
+        <Label fx:id="lblRightStatus" font="$x3" maxWidth="-1.0" textFill="$x4" HBox.hgrow="NEVER" />
+      </children>
+      <padding>
+        <Insets bottom="3.0" left="3.0" right="3.0" top="3.0" />
+      </padding>
+    </HBox>
+  </children>
+</VBox>

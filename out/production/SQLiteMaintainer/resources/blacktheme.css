@@ -1,0 +1,224 @@
+
+.root {
+  -fx-base: #332b33 ;
+  -fx-control-inner-background: derive(-fx-base,20%);
+  -fx-control-inner-background-alt: derive(-fx-control-inner-background,-10%);
+  -fx-accent: #f19f48;
+  -fx-focus-color: #f19f48;
+  -fx-faint-focus-color: #f19f48;
+  -fx-font-size: 12px;
+   -fx-font-family: Helvetica Neue;
+  -fx-padding: 0 0 0 0;
+ }
+
+ .tree-cell:filled:selected {
+    -fx-background-color: #f19f48;
+ }
+
+ .tree-cell:filled:hover{
+    -fx-background-color: #f19f48;
+ }
+
+ .tree-cell {
+     //-fx-background-color:#332b33;
+ }
+
+
+ .list-cell {
+     // -fx-padding: 10 10 10 10;
+ }
+ #custom_list{
+    -fx-padding: 0,0,0,0;
+ }
+ .list-cell:filled:selected {
+     /* 3:, 4: */
+     -fx-background-color: #f19f48;;
+     -fx-text-fill: black; /* 5 */
+     // -fx-border-radius: 20;
+ }
+
+ .list-cell:filled:hover {
+     -fx-background-color: #f19f48;; /* 2 */
+     -fx-text-fill: black; /* 5 */
+     // -fx-border-radius: 20;
+ }
+
+ .list-cell{
+     -fx-background-color: #332b33;
+ }
+
+ //Scrollbar syling
+ .list-view > .virtual-flow > .scroll-bar,
+ .list-view > .virtual-flow > .scroll-bar .decrement-arrow,
+ .list-view > .virtual-flow > .scroll-bar .increment-arrow,
+ .list-view > .virtual-flow > .scroll-bar .decrement-button,
+ .list-view > .virtual-flow > .scroll-bar .increment-button {
+     -fx-pref-width: 0;
+     -fx-pref-height: 0;
+ }
+
+ .list-view{
+     //-fx-background-radius: 20;
+ }
+ .list-cell, .list-cell::focused{
+    // -fx-border-radius: 20;
+ }
+
+ .scroll-bar:vertical .thumb {
+     -fx-background-insets: 0 2 0 0;
+ }
+
+ .scroll-bar:horizontal .thumb {
+     -fx-background-insets: 0 0 2 0;
+ }
+
+ .scroll-bar {
+     -fx-background-color: transparent;
+     -fx-pref-width: 10;
+     -fx-pref-height: 10;
+     -fx-padding: 2;
+ }
+//split pane
+.split-pane > .split-pane-divider {
+    -fx-padding: 0 0.02em 0 0.02em;
+    -fx-background-color: transparent;
+}
+ .scroll-bar .thumb {
+     -fx-background-color: rgb(241, 159, 72, 0.5);
+     -fx-background-radius: 500;
+     -fx-pref-width: 10;
+     -fx-pref-height: 10;
+ }
+
+
+
+ .tab-pane
+ {
+     -fx-tab-min-width:90px;
+ }
+
+ .tab{
+     -fx-background-insets: 0 1 0 1,0,0;
+ }
+ .tab-pane .tab
+ {
+     -fx-background-color: #e6e6e6;
+
+ }
+
+ .tab-pane .tab:selected
+ {
+     -fx-background-color: #332b33 ;
+ }
+
+ .tab .tab-label {
+     -fx-alignment: CENTER;
+     -fx-text-fill: #828282;
+     -fx-font-size: 12px;
+     -fx-font-weight: bold;
+ }
+
+ .tab:selected .tab-label {
+     -fx-alignment: CENTER;
+     -fx-text-fill: #fff;
+ }
+
+ .tab-pane:top *.tab-header-area, .tab-pane:right *.tab-header-area,
+  .tab-pane:left *.tab-header-area, .tab-pane:bottom *.tab-header-area{
+      -fx-background-insets: 0, 0 0 1 0;
+  /* -fx-padding: 0.416667em 0.166667em 0.0em 0.833em; /* 5 2 0 10 */
+     -fx-padding: 0.416667em 0.166667em 0.0em 0.0em; /* overridden as 5 2 0 0 */
+ }
+
+ //Text Area Spacing
+
+
+ .text-area {
+     -fx-font-weight: bold;
+     -fx-background-insets: 0;
+     -fx-background-color: transparent, #332b33 , transparent, #332b33 ;
+ }
+
+ .text-area .content {
+     -fx-background-color: transparent, #332b33 , transparent, #332b33 ;
+
+ }
+
+ .text-area:focused .content {
+     -fx-background-color: transparent, #332b33 , transparent, #332b33 ;
+
+ }
+
+ .text-area:focused {
+     -fx-highlight-fill: #f19f48;
+
+ }
+
+ .text-area .content {
+     -fx-padding: 5px;
+     -fx-text-fill: gray;
+
+     -fx-highlight-fill: #f19f48;
+ }
+#myLabel{
+    -fx-background-color:  #332b33;
+    -fx-text-fill: white;
+}
+#textAreaCode .content{
+    -fx-text-fill: white;
+    -fx-highlight-fill: #7ecfff;
+}
+#anotherLabel{
+    -fx-background-color:  #332b33;
+    -fx-text-fill: white;
+}
+#myHBox{
+  -fx-background-color:  #332b33;
+  -fx-text-fill: white;
+}
+
+.code-area{
+    -fx-background-color: #332b33;
+    -fx-font-size: 14px;
+}
+
+.paragraph-text .text{
+    -fx-fill: #3FFF07;
+}
+
+.keyword {
+    -fx-fill: #f19f48 !important;
+    -fx-font-weight: bold !important;
+}
+.semicolon {
+    -fx-font-weight: bold !important;
+}
+
+
+.paren {
+    -fx-fill: firebrick !important;
+    -fx-font-weight: bold !important;
+}
+.bracket {
+    -fx-fill: darkgreen !important;
+    -fx-font-weight: bold !important;
+}
+.brace {
+    -fx-fill: teal !important;
+    -fx-font-weight: bold !important;
+}
+.string {
+    -fx-fill: blue !important;
+}
+
+.comment {
+	-fx-fill: cadetblue !important;
+}
+
+.paragraph-box:has-caret {
+    -fx-background-color: #f2f9fc !important;
+}
+
+
+
+

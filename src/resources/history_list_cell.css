@@ -1,0 +1,40 @@
+.root{
+      -fx-font-family: Helvetica Neue;
+}
+
+.list-cell {
+   -fx-padding: 0 0 0 0;
+}
+
+.list-cell:filled:selected {
+    /* 3:, 4: */
+    -fx-background-color: #bdd9ff;;
+    -fx-text-fill: black; /* 5 */
+     //-fx-border-radius: 0;
+}
+
+.list-cell:filled:hover {
+    -fx-background-color: #bdd9ff;; /* 2 */
+    -fx-text-fill: black; /* 5 */
+    // -fx-border-radius: 20;
+}
+
+//Scrollbar syling
+.list-view > .virtual-flow > .scroll-bar,
+.list-view > .virtual-flow > .scroll-bar .decrement-arrow,
+.list-view > .virtual-flow > .scroll-bar .increment-arrow,
+.list-view > .virtual-flow > .scroll-bar .decrement-button,
+.list-view > .virtual-flow > .scroll-bar .increment-button {
+    -fx-pref-width: 0;
+    -fx-pref-height: 0;
+}
+
+.list-view{
+    //-fx-background-radius: 20;
+}
+.list-cell, .list-cell::focused{
+    -fx-border-radius: 0;
+}
+.list-cell{
+    -fx-background-color: white;
+}

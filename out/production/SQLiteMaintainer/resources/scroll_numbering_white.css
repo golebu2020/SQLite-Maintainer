@@ -1,0 +1,8 @@
+.text-area .scroll-bar: vertical{
+    -fx-pref-width: 1;
+    -fx-opacity: 0;
+}
+
+.text-area{
+    -fx-border-width: 0;
+}

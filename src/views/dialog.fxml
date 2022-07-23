@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ButtonBar?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="161.0" prefWidth="347.0" spacing="20.0" stylesheets="@../resources/blacktheme.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.DialogController">
+   <children>
+      <Label text="Enter the name of your SQlite Database:">
+         <VBox.margin>
+            <Insets left="20.0" top="20.0" />
+         </VBox.margin>
+         <font>
+            <Font name="Helvetica Neue" size="12.0" />
+         </font>
+      </Label>
+      <TextField fx:id="textAreaDBName" prefHeight="38.0" prefWidth="307.0" promptText="e.g., NewDabase.db">
+         <VBox.margin>
+            <Insets left="20.0" right="20.0" />
+         </VBox.margin>
+         <font>
+            <Font name="Helvetica Neue" size="12.0" />
+         </font>
+      </TextField>
+      <HBox prefHeight="31.0" prefWidth="347.0">
+         <children>
+            <ButtonBar prefHeight="31.0" prefWidth="353.0">
+              <buttons>
+                <Button fx:id="btnAdd" mnemonicParsing="false" onAction="#addDB" text="Add">
+                     <font>
+                        <Font name="Helvetica Neue" size="12.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="btnCancel" layoutX="135.0" layoutY="13.0" mnemonicParsing="false" onAction="#cancelDialog" text="Cancel">
+                     <font>
+                        <Font name="Helvetica Neue" size="12.0" />
+                     </font>
+                  </Button>
+              </buttons>
+               <HBox.margin>
+                  <Insets right="20.0" />
+               </HBox.margin>
+            </ButtonBar>
+         </children>
+      </HBox>
+   </children>
+   <padding>
+      <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+   </padding>
+</VBox>
