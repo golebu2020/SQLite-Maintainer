@@ -32,7 +32,7 @@ public class HelperClass {
                "CREATE", "create", "table", "TABLE",
                "COLUMN", "column", "rows", "ROWS", "INTEGER", "integer", "INT", "int",
                "primary", "PRIMARY", "KEY", "key", "TEXT", "text", "NOT", "not", "OR",
-               "and", "AND"
+               "and", "AND", "INTO", "into", "VALUES", "values"
        };
        private static final String KEYWORD_PATTERN = "\\b(" + String.join("|", HelperClass.KEYWORDS) + ")\\b";
        private static final String PAREN_PATTERN = "\\(|\\)";

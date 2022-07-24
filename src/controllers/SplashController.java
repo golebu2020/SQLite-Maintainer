@@ -7,6 +7,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
@@ -46,6 +47,8 @@ public class SplashController implements Initializable {
                         newStage.setScene(scene);
                         newStage.setTitle("SQLiteMaintainer");
                         newStage.show();//scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("../resources/application.css")).toExternalForm());
+
+                        newStage.getIcons().add(new Image(Objects.requireNonNull(getClass().getResourceAsStream("../resources/app_icon.PNG"))));
                         anchorPaneSplash.getScene().getWindow().hide();
                     } catch (IOException e) {
                         e.printStackTrace();
